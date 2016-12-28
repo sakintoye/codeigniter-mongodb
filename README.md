@@ -76,4 +76,4 @@ Now you can access the methods using $this->mongo_db-> in your controller as wel
 
 ##License
 Creative Commons Attribution 3.0 License.
-Codes are provided AS IS basis, i am not responsible for anything.
+Codes are provided AS IS basis, I am not responsible for anything.
