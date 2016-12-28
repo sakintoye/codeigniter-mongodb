@@ -3,13 +3,12 @@
 A high level library for querying MongoDb in Code Igniter. This library helps you perform active record queries on MongoDb, just like you would in Code Igniter.
 
 #Installation and Configuration
-Download the repo and unzip it. You will see 2 folders `config` and `libraries`. Paste those 2 folders in your CodeIgniter application folder.
-After this, you will see mongo_db.php file in your application/config and application/libraries folder of CodeIgniter setup.
-Now its time to configure the library and connect to MongoDb.
- 1) Open config/mongo_db.php file and set MongoDb login details.
- 2) Open config/autoload.php file and add 'mongo_db' in $autoload['libraries'] array.
-That's it - installation and configuration completed. By default library connect to database provided in "default" group.
-Now you can access the methods using $this->mongo_db-> in your controller as well as in model.
+- Download the repo and unzip it. You will find 2 folders: `config` and `libraries`. Paste those 2 folders in your Code Igniter application folder.
+- Now its time to configure the library and connect to MongoDb.
+ - Open config/mongo_db.php file and set MongoDb login details.
+ - Open config/autoload.php file and add 'mongo_db' in $autoload['libraries'] array.
+- That's it - installation and configuration completed. By default library connect to database provided in "default" group.
+- To make ActiveRecord-like queries, use `$this->mongo_db->` in your model or controller. 
 
 
 #Methods
