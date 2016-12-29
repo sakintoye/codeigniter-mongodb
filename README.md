@@ -8,7 +8,7 @@ A high level library for querying MongoDb in Code Igniter. This library helps yo
  - Open config/mongo_db.php file and set MongoDb login details.
  - Open config/autoload.php file and add 'mongo_db' in $autoload['libraries'] array.
 - That's it - installation and configuration completed. By default library connect to database provided in "default" group.
-- To make ActiveRecord-like queries, use `$this->mongo_db->` in your model or controller. 
+- To make ActiveRecord-like queries, use `$this->mongo_db->` in your model or controller.
 
 
 #Methods
@@ -18,6 +18,8 @@ A high level library for querying MongoDb in Code Igniter. This library helps yo
 * `batch_insert` Insert multiple new documents into a collection
 
 ##Select Method
+* `get_one` Get a single document based upon the passed parameters
+* `get` Get documents based upon the passed parameters
 * `select` Get select fields from returned documents. Uses MongoDb's juicy projection method
 * `where` OR `get_where` Where section of the query
 * `where_in` Where something is in an array of something

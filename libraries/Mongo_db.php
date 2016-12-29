@@ -384,7 +384,7 @@ Class Mongo_db{
     }
     $document = $this->db->{$collection}->findOne($this->wheres, ['projection'=>$this->selects]);
 		$this->_clear();
-    return (array) $document;
+    return $document;
   }
 
   public function find($collection){
@@ -399,7 +399,7 @@ Class Mongo_db{
     $documents = array();
     if(! empty($result)){
       foreach ($result as $row) {
-        $documents[] = (array) $row;
+        $documents[] = $row;
       }
     }
 		$this->_clear();
@@ -499,6 +499,24 @@ Class Mongo_db{
 		$this->_w($field);
 		$this->wheres[$field]['$gte'] = $x;
 		return($this);
+	}
+
+	/**
+	* --------------------------------------------------------------------------------
+	* // Get One Document [Alias of find_one()]
+	* --------------------------------------------------------------------------------
+	*
+	* Get a single document based upon the passed parameters
+	*
+	* @usage : $this->mongo_db->get_one('foo');
+	*/
+	public function get_one($collection = "")
+	{
+		if (empty($collection))
+		{
+			show_error("In order to retrieve documents from MongoDB, a collection name must be passed", 500);
+		}
+		return $this->find_one($collection);
 	}
 
 	/**
