@@ -589,7 +589,7 @@ Class Mongo_db{
 		{
 			show_error("In order to retrieve a count of documents from MongoDB, a collection name must be passed", 500);
 		}
-		$count = $this->db->{$collection}->find($this->wheres)->limit((int) $this->limit)->skip((int) $this->offset)->count();
+		$count = $this->db->{$collection}->count($this->wheres);
 		$this->_clear();
 		return ($count);
 	}
