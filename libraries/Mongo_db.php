@@ -280,7 +280,7 @@ Class Mongo_db{
 		{
 			show_error("No Mongo collection selected to insert into", 500);
 		}
-
+		$insert = array_merge($insert, $this->updates['$set']);
 		if (!is_array($insert) || count($insert) == 0)
 		{
 			show_error("Nothing to insert into Mongo collection or insert is not an array", 500);
