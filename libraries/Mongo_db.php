@@ -217,7 +217,7 @@ Class Mongo_db{
 			{
 				$options = array('username'=>$this->username, 'password'=>$this->password);
 			}
-			$this->connect = (new MongoDB\Client('mongodb://10.211.55.4/')); // new MongoClient($dns, $options);
+			$this->connect = (new MongoDB\Client($dns, $options));
 			// $this->db = $this->connect->selectDB($this->database);
 			$this->db = $this->connect->{$this->database};
 		}
