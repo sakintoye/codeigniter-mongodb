@@ -240,28 +240,42 @@ Class Mongo_db{
 	* --------------------------------------------------------------------------------
   *
   * Accepts single array or multiple arrays
-  * @usage : $this->mongo_db->set([['title'=>'Batman v Superman']]) Single array element
+  * @usage : $this->mongo_db->set(['title'=>'Batman v Superman']) Single array element
   * or
   * $this->mongo_db->set([['title'=>'Batman v Superman'], ['rating'=>9]]) Multi array elements
   */
-  public function set($data = array())
+  public function set($data, $value='')
   {
     if(empty($data)){
       show_error("Expected an array but got empty value");
     }
     if(! is_array($data)){
-      show_error("Expected an array but got non array value");
+			if(is_string($data)){
+				$this->updates['$set'][$data] = $value;
+				// if($value != ''){
+				// 	$this->updates['$set'][$data] = $value;
+				// }
+				// else{
+				// 	show_error("Expected second parameter to be non empty string. Got empty string");
+				// }
+			}
+			else{
+				show_error("Expected an array but got non array value");
+			}
     }
-    if(is_array($data[0])){ // Traverse array and build "$this->updates" instance variable
-      foreach ($data as $key => $val) {
-        // $key = key($prop);
-        $this->updates['$set'][$key] = $val;
-      }
-    }
-    else{
-      $key = key($data);
-      $this->updates['$set'][$key] = $data[$key];
-    }
+		else{
+			if(is_array($data[0])){ // Traverse array and build "$this->updates" instance variable
+	      foreach ($data as $key => $val) {
+	        // $key = key($prop);
+	        $this->updates['$set'][$key] = $val;
+	      }
+	    }
+	    else{
+	      $key = key($data);
+	      $this->updates['$set'][$key] = $data[$key];
+	    }
+		}
+
     return $this;
   }
 
