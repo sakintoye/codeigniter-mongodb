@@ -388,12 +388,13 @@ Class Mongo_db{
   * Returns a single document matching the query. Accepts a (key=>value) pair array as WHERE clause
   * @ussage: $this->mongo_db->find('users', ['first_name'=>'foo'])
   */
-  public function find_one($collection){
+  public function find_one($collection, $condition = array()){
     if (empty($collection))
 		{
 			show_error("In order to retrieve documents from MongoDB, a collection name must be passed", 500);
 		}
-    if(! is_array($this->wheres) || empty($this->wheres)){
+		$this->wheres = array_merge($this->wheres, $condition);
+    if(! is_array($this->wheres)){
       show_error("Condition should be an array.", 500);
     }
     $document = $this->db->{$collection}->findOne($this->wheres, ['projection'=>$this->selects]);
