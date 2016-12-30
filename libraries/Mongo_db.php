@@ -536,6 +536,24 @@ Class Mongo_db{
 
 	/**
 	* --------------------------------------------------------------------------------
+	* // All
+	* --------------------------------------------------------------------------------
+	*
+	* Return all documents in a given collection
+	*
+	* @usage : $this->mongo_db->all('foo');
+	*/
+	public function all($collection = "")
+	{
+		if (empty($collection))
+		{
+			show_error("In order to retrieve documents from MongoDB, a collection name must be passed", 500);
+		}
+		return $this->find($collection);
+	}
+
+	/**
+	* --------------------------------------------------------------------------------
 	* // Get [Alias of find()]
 	* --------------------------------------------------------------------------------
 	*
