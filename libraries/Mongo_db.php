@@ -407,7 +407,7 @@ Class Mongo_db{
 		{
 			show_error("In order to retrieve documents from MongoDB, a collection name must be passed", 500);
 		}
-    if(! is_array($this->wheres) || empty($this->wheres)){
+    if(! is_array($this->wheres)){
       show_error("Condition should be an array.", 500);
     }
     $result = $this->db->{$collection}->find($this->wheres, ['projection'=>$this->selects, 'limit'=>$this->limit, 'sort'=>$this->sorts]);
